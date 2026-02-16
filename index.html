@@ -67,37 +67,18 @@
 
 					<div class="form-group">
 						<label>¿Vendrá con niños?</label>
-						<select name="entry.1169705358" required>
-							<option value="Sí">Sí</option>
+						<select name="entry.1169705358" id="vienenNinos" onchange="toggleNinos()" required>
 							<option value="No">No</option>
+							<option value="Sí">Sí</option>
 						</select>
 					</div>
 
 					<div id="seccionEdades" style="display: none;">
 						<div class="form-group">
 							<label>Indique cuantos y edad de los mismos</label>
-							<input type="text" name="entry.1056378089" placeholder="Ej: 2 niños, 4 y 7 años">
+							<input type="text" name="entry.1056378089" id="inputEdades" placeholder="Ej: 2 niños, 4 y 7 años">
 						</div>
 					</div>
-
-					<script>
-						var submitted = false;
-						
-						function toggleNinos() {
-						    var select = document.getElementById("vienenNinos");
-						    var seccion = document.getElementById("seccionEdades");
-						    var input = document.getElementById("inputEdades");
-						    
-						    if (select.value === "Sí") {
-						        seccion.style.display = "block";
-						        input.required = true; // Solo es obligatorio si dice que SÍ
-						    } else {
-						        seccion.style.display = "none";
-						        input.required = false;
-						        input.value = ""; // Limpiamos el texto si cambia a NO
-						    }
-						}
-					</script>
 
 					<div class="form-group">
 						<label>Intolerancias alimentarias</label>
@@ -112,9 +93,24 @@
 					<button type="submit" class="button">Enviar</button>
 				</form>
 			</section>
-
-			<script>var submitted=false;</script>
+			<script>
+			    var submitted = false;
 			
+			    function toggleNinos() {
+			        var select = document.getElementById("vienenNinos");
+			        var seccion = document.getElementById("seccionEdades");
+			        var input = document.getElementById("inputEdades");
+			        
+			        if (select.value === "Sí") {
+			            seccion.style.display = "block";
+			            input.required = true;
+			        } else {
+			            seccion.style.display = "none";
+			            input.required = false;
+			            input.value = "";
+			        }
+			    }
+			</script>
         </main>
 
         <footer>
