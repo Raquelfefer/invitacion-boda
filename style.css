@@ -185,7 +185,7 @@ body {
 
 /* Texto y Tipografía */
 .drop-cap::first-letter {
-    font-family: 'Cinzel', serif;
+    font-family: 'Playfair Display', serif;
     float: left;
     font-size: 4rem;
     line-height: 0.8;
