@@ -157,6 +157,7 @@ body {
 
     .logo {
         max-width: 150px;
+        margin-top: 0px;
     }
 
     .titulo-principal {
@@ -406,4 +407,10 @@ h3 {
     /* AJUSTE VERTICAL */
     /* Ajusta este número si quieres que suba o baje más */
     margin-top: -65px; 
+}
+
+@media (max-width: 480px) {
+    .top-floral-banner {
+        margin-top: -45px;
+    } 
 }
