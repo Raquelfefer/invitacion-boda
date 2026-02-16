@@ -375,3 +375,18 @@ h3 {
         font-size: 2.2rem;
     }
 }
+
+/* Estilo específico para el sobre en el mensaje de confirmación */
+.imagen-sobre-custom {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* Esto añade una sombra suave debajo del sobre para darle profundidad */
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.3));
+    
+    /* Si la imagen tuviera fondo negro y quisieras disimularlo (opcional): */
+    /* mix-blend-mode: multiply; */ 
+}
+
+.popup-elegante {
+    border: 1px solid #d2b48c; /* Borde fino color canela al cuadro de aviso */
+}
