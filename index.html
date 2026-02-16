@@ -45,7 +45,7 @@
 
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
 					  method="post" 
-					   
+					  target="hidden_iframe"
 					  onsubmit="submitted=true;">
 
 					<div class="form-group">
@@ -67,16 +67,35 @@
 
 					<div class="form-group">
 						<label>¿Vendrá con niños?</label>
-						<select name="entry.1169705358">
+						<select name="entry.1169705358" required>
 							<option value="Sí">Sí</option>
 							<option value="No">No</option>
 						</select>
 					</div>
 
-					<div class="form-group">
-						<label>Indique cuantos y edad de los mismos</label>
-						<input type="text" name="entry.1056378089" placeholder="Ej: 2 niños, 4 y 7 años">
+					<div id="seccionEdades" style="display: none;">
+						<div class="form-group">
+							<label>Indique cuantos y edad de los mismos</label>
+							<input type="text" name="entry.1056378089" placeholder="Ej: 2 niños, 4 y 7 años">
+						</div>
 					</div>
+
+					<script>
+						function toggleNinos() {
+						    var select = document.getElementById("vienenNinos");
+						    var seccion = document.getElementById("seccionEdades");
+						    var input = document.getElementById("inputEdades");
+						    
+						    if (select.value === "Sí") {
+						        seccion.style.display = "block";
+						        input.required = true; // Solo es obligatorio si dice que SÍ
+						    } else {
+						        seccion.style.display = "none";
+						        input.required = false;
+						        input.value = ""; // Limpiamos el texto si cambia a NO
+						    }
+						}
+					</script>
 
 					<div class="form-group">
 						<label>Intolerancias alimentarias</label>
