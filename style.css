@@ -146,6 +146,13 @@ body {
 /* Subtítulo */
 .header-subtitle {
     text-align: center;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.header-subsubtitle{
+    text-align: center;
     font-size: 1rem;
     letter-spacing: 2px;
     margin-bottom: 10px;
@@ -165,6 +172,14 @@ body {
 
     .lugar-fecha {
         font-size: 1.2rem;
+    }
+
+    .header-subtitle{
+        font-size: 1.2rem;
+    }
+
+    .header-subsubtitle{
+        font-size: 0.6rem;
     }
 }
 
@@ -218,6 +233,7 @@ h3 {
     font-weight: bold;
     border-radius: 2px;
     transition: 0.3s;
+    font-size: 1.5rem;
 }
 
 .button:hover {
