@@ -110,7 +110,12 @@
 				    var input = document.getElementById("inputEdades");
 				
 				    if (select.value === "Sí" && !input.value.trim()) {
-				        alert("Por favor indica cuántos niños vienen y sus edades.");
+				        Swal.fire({
+						    icon: "warning",
+						    title: "Información incompleta",
+						    text: "Por favor indica cuántos niños vienen y sus edades.",
+						    confirmButtonColor: "#8b6b3d"
+						});
 				        input.focus();
 				        return false;
 				    }
@@ -124,7 +129,15 @@
 				        body: formData
 				    })
 				    .then(() => {
-				        alert("¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.");
+				        Swal.fire({
+							title: "Respuesta recibida",
+							text: "Nos veremos en el baile más esperado de la temporada.",
+							icon: "success",
+							confirmButtonText: "Cerrar",
+							background: "#f8f1e4",
+							color: "#3e2f1c",
+							confirmButtonColor: "#8b6b3d"
+						});
 				        form.reset();
 				        toggleNinos();
 				    })
@@ -143,6 +156,6 @@
             <p class="signature">Lady Whistledown</p>
         </footer>
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
