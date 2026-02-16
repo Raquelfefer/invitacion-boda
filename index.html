@@ -113,8 +113,8 @@
 				        Swal.fire({
 						    icon: "warning",
 						    title: "Información incompleta",
-						    text: "Por favor indica cuántos niños vienen y sus edades.",
-						    confirmButtonColor: "#8b6b3d"
+						    text: "Esta autora ruega indique cuántos niños asistirán y sus edades.",
+						    confirmButtonText: "Entendido"
 						});
 				        input.focus();
 				        return false;
@@ -130,13 +130,10 @@
 				    })
 				    .then(() => {
 				        Swal.fire({
-							title: "Respuesta recibida",
-							text: "Nos veremos en el baile más esperado de la temporada.",
-							icon: "success",
-							confirmButtonText: "Cerrar",
-							background: "#f8f1e4",
-							color: "#3e2f1c",
-							confirmButtonColor: "#8b6b3d"
+						    title: "Respuesta recibida",
+						    text: "Lady Whistledown ha tomado debida nota de su confirmación. Nos veremos en la celebración más esperada de la temporada.",
+						    icon: "success",
+						    confirmButtonText: "Cerrar"
 						});
 				        form.reset();
 				        toggleNinos();
