@@ -207,14 +207,23 @@
 				       Swal.fire({
 						    title: "Respuesta recibida",
 						    text: "Lady Whistledown ha tomado debida nota de su confirmación.",
-						    icon: "success",
+						    imageUrl: 'sobre-lacre.png',
+						   	imageWidth: 280, 
+    						imageHeight: 180,
+    						imageAlt: 'Sobre lacrado exclusivo',
 						    confirmButtonText: "Cerrar",
+						   	background: '#fdfaf0', 
+    						color: '#2c2c2c',
 						    showClass: {
 						        popup: 'animate__animated animate__fadeInDown'
 						    },
 						    hideClass: {
 						        popup: 'animate__animated animate__fadeOutUp'
 						    }
+						   customClass: {
+       					   image: 'imagen-sobre-custom', 
+        				   popup: 'popup-elegante'
+    						}
 						});
 				        form.reset();
 				        toggleNinos();
