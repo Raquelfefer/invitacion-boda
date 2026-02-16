@@ -15,6 +15,58 @@
 	<button id="botonMusica" class="music-button">
     🎻
 	</button>
+	<script>
+		const audio = document.getElementById("musica");
+		const boton = document.getElementById("botonMusica");
+		
+		let fadeInterval;
+		audio.volume = 0;
+		
+		function fadeInAudio() {
+		    audio.volume = 0;
+		    audio.play();
+		
+		    fadeInterval = setInterval(() => {
+		        if (audio.volume < 0.4) {
+		            audio.volume = Math.min(audio.volume + 0.02, 0.4);
+		        } else {
+		            clearInterval(fadeInterval);
+		        }
+		    }, 200);
+		}
+		
+		function fadeOutAudio() {
+		    fadeInterval = setInterval(() => {
+		        if (audio.volume > 0.02) {
+		            audio.volume = Math.max(audio.volume - 0.02, 0);
+		        } else {
+		            clearInterval(fadeInterval);
+		            audio.pause();
+		        }
+		    }, 200);
+		}
+		
+		boton.addEventListener("click", () => {
+		    if (audio.paused) {
+		        fadeInAudio();
+		        boton.classList.add("playing");
+		        localStorage.setItem("musicaActiva", "true");
+		    } else {
+		        fadeOutAudio();
+		        boton.classList.remove("playing");
+		        localStorage.setItem("musicaActiva", "false");
+		    }
+		});
+		
+		/* Recordar estado */
+		window.addEventListener("load", () => {
+		    if (localStorage.getItem("musicaActiva") === "true") {
+		        fadeInAudio();
+		        boton.classList.add("playing");
+		    }
+		});
+	</script>
+
     <div class="paper-container">
         <header>
             <div class="header-top">LONDRES, 1813</div>
