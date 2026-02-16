@@ -41,9 +41,7 @@
 				<h3>Confirmación de Asistencia</h3>
 				<p><i>Se ruega a los invitados que informen a esta autora de sus planes con la mayor brevedad.</i></p>
 
-				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
-      				method="post"
-      				onsubmit="return enviarFormulario(event)">
+				<form id="miFormulario" onsubmit="return enviarFormulario(event)">
 
 					<div class="form-group">
 						<label>Nombre completo</label>
@@ -99,14 +97,15 @@
 				    if (select.value === "Sí") {
 				        seccion.style.display = "block";
 				        input.value = "";
-				        input.focus();
 				    } else {
 				        seccion.style.display = "none";
 				        input.value = "";
 				    }
 				}
 				
-				function enviarFormulario(event) {
+				function enviarFormulario(e) {
+				    e.preventDefault(); 
+				
 				    var select = document.getElementById("vienenNinos");
 				    var input = document.getElementById("inputEdades");
 				
@@ -116,8 +115,24 @@
 				        return false;
 				    }
 				
-				    alert("¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.");
-				    return true; // deja enviar normal
+				    var form = document.getElementById("miFormulario");
+				    var formData = new FormData(form);
+				
+				    fetch("https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse", {
+				        method: "POST",
+				        mode: "no-cors",
+				        body: formData
+				    })
+				    .then(() => {
+				        alert("¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.");
+				        form.reset();
+				        toggleNinos();
+				    })
+				    .catch(() => {
+				        alert("Hubo un problema al enviar el formulario.");
+				    });
+				
+				    return false;
 				}
 			</script>
         </main>
