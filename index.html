@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="toggleNinos()">
 
     <div class="paper-container">
         <header>
@@ -46,7 +46,7 @@
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
 					  method="post" 
 					  target="hidden_iframe"
-					  onsubmit="submitted=true;">
+					  onsubmit="submitted=true; return validarNinos();">
 
 					<div class="form-group">
 						<label>Nombre completo</label>
@@ -97,18 +97,28 @@
 			    var submitted = false;
 			
 			    function toggleNinos() {
+			        var select = document.getElementById("vienenNinos");
+			        var seccion = document.getElementById("seccionEdades");
+			        var input = document.getElementById("inputEdades");
+			        
+			        if (select.value === "Sí") {
+			            seccion.style.display = "block";
+			            input.required = true;     
+			        } else {
+			            seccion.style.display = "none";
+			            input.required = false;   
+			            input.value = "";
+			        }
+			    }
+				function validarNinos() {
 				    var select = document.getElementById("vienenNinos");
-				    var seccion = document.getElementById("seccionEdades");
 				    var input = document.getElementById("inputEdades");
-				    
-				    if (select.value === "Sí") {
-				        seccion.style.display = "block";
-				        input.setAttribute("required", ""); // Usamos setAttribute para mayor compatibilidad
-				    } else {
-				        seccion.style.display = "none";
-				        input.removeAttribute("required"); // Quitamos el atributo por completo
-				        input.value = ""; 
+				
+				    if (select.value === "Sí" && !input.value.trim()) {
+				        alert("Por favor indica cuántos niños vienen y sus edades.");
+				        return false; 
 				    }
+				    return true; 
 				}
 			</script>
         </main>
