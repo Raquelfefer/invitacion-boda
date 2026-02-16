@@ -41,12 +41,9 @@
 				<h3>Confirmación de Asistencia</h3>
 				<p><i>Se ruega a los invitados que informen a esta autora de sus planes con la mayor brevedad.</i></p>
 
-				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted) { alert('¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.'); window.location.reload(); }"></iframe>
-
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
-					  method="post" 
-					  target="hidden_iframe"
-					  onsubmit="submitted=true;  return validarNinos();">
+      				method="post"
+      				onsubmit="return enviarFormulario(event)">
 
 					<div class="form-group">
 						<label>Nombre completo</label>
@@ -94,33 +91,33 @@
 				</form>
 			</section>
 			<script>
-    			var submitted = false;
-    
 				function toggleNinos() {
-					var select = document.getElementById("vienenNinos");
-					var seccion = document.getElementById("seccionEdades");
-					var input = document.getElementById("inputEdades");
-					
-					if (select.value === "Sí") {
-						seccion.style.display = "block";
-						input.value = "";  
-						input.focus();
-					} else {
-						seccion.style.display = "none";
-						input.value = "Ninguno";  
-					}
+				    var select = document.getElementById("vienenNinos");
+				    var seccion = document.getElementById("seccionEdades");
+				    var input = document.getElementById("inputEdades");
+				    
+				    if (select.value === "Sí") {
+				        seccion.style.display = "block";
+				        input.value = "";
+				        input.focus();
+				    } else {
+				        seccion.style.display = "none";
+				        input.value = "";
+				    }
 				}
 				
-				function validarNinos() {
-					var select = document.getElementById("vienenNinos");
-					var input = document.getElementById("inputEdades");
-					
-					if (select.value === "Sí" && !input.value.trim()) {
-						alert("Por favor indica cuántos niños vienen y sus edades.");
-						input.focus();
-						return false;  // BLOQUEA envío
-					}
-					return true;  // PERMITE envío
+				function enviarFormulario(event) {
+				    var select = document.getElementById("vienenNinos");
+				    var input = document.getElementById("inputEdades");
+				
+				    if (select.value === "Sí" && !input.value.trim()) {
+				        alert("Por favor indica cuántos niños vienen y sus edades.");
+				        input.focus();
+				        return false;
+				    }
+				
+				    alert("¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.");
+				    return true; // deja enviar normal
 				}
 			</script>
         </main>
