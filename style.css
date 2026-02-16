@@ -145,6 +145,41 @@ h3 {
     background-color: #1a1a1a;
 }
 
+.swal2-popup {
+    font-family: 'Playfair Display', serif;
+    background: #fdfaf0;
+    border: 1px solid #d2b48c;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    color: #2c2c2c;
+}
+
+.swal2-title {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+.swal2-confirm {
+    font-family: 'Cinzel', serif !important;
+    background-color: #2c2c2c !important;
+    color: #fdfaf0 !important;
+    border-radius: 2px !important;
+    padding: 10px 25px !important;
+}
+
+.swal2-confirm:hover {
+    background-color: #555 !important;
+}
+
+.swal2-icon.swal2-success {
+    border-color: #8b6b3d;
+    color: #8b6b3d;
+}
+
+.swal2-icon.swal2-warning {
+    border-color: #8b6b3d;
+    color: #8b6b3d;
+}
+
 /* Ajustes para Móviles */
 @media (max-width: 480px) {
     .paper-container {
@@ -157,3 +192,5 @@ h3 {
         font-size: 2.2rem;
     }
 }
+
+
