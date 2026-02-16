@@ -10,53 +10,56 @@ body {
 }
 
 /* El "Panfleto" */
-/* El "Panfleto" con borde punteado y ornamentos estilo Bridgerton */
+/* El "Panfleto" con línea negra y punteado */
 .paper-container {
-    background-color: #fdfaf0; /* Color papel antiguo */
+    background-color: #fdfaf0; /* papel antiguo */
     max-width: 600px;
     width: 100%;
     padding: 40px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.25), inset 0 0 10px rgba(0,0,0,0.05);
-    border: 2px dotted #2c2c2c; /* 🔹 borde punteado negro */
-    border-radius: 8px; /* esquinas ligeramente redondeadas */
     position: relative;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25), inset 0 0 10px rgba(0,0,0,0.05);
 }
 
-/* Ornamentos en las esquinas (círculos abiertos) */
-.paper-container::before,
+/* Línea negra central */
+.paper-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #2c2c2c; /* línea negra principal */
+    box-sizing: border-box;
+}
+
+/* Punteado exterior */
 .paper-container::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #2c2c2c;
-    border-radius: 50%;
+    top: -6px;  /* separación desde la línea negra */
+    left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border: 2px dotted #2c2c2c; /* punteado alrededor */
+    box-sizing: border-box;
 }
 
-.paper-container::before {
-    top: 10px;
-    left: 10px;
-    border-right: none;
-    border-bottom: none;
-}
-
-.paper-container::after {
-    bottom: 10px;
-    right: 10px;
-    border-left: none;
-    border-top: none;
-}
-
-/* Ajustes para móviles */
+/* ===== AJUSTE PARA MÓVIL ===== */
 @media (max-width: 480px) {
     .paper-container {
-        padding: 25px 20px 30px 20px;
+        padding: 25px 15px;
     }
 
-    .paper-container::before,
     .paper-container::after {
-        width: 15px;
-        height: 15px;
+        top: -3px;   /* menos separación en móvil */
+        left: -3px;
+        width: calc(100% + 6px);
+        height: calc(100% + 6px);
+        border-width: 1.5px; /* punteado más fino para móvil */
+    }
+
+    .paper-container::before {
+        border-width: 1.5px; /* línea negra más fina en móvil */
     }
 }
 
