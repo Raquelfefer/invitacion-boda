@@ -1,4 +1,9 @@
 /* Configuración General */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* ¡Esto elimina la barra de desplazamiento horizontal! */
+}
+
 body {
     background-color: #d4c3a3; /* Color de fondo exterior */
     margin: 0;
@@ -345,11 +350,24 @@ h3 {
 /* Ajuste extra para pantallas muy pequeñas */
 @media (max-width: 480px) {
     .music-button {
-        bottom: 10px;
-        right: 10px;
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
+        /* 1. TAMAÑO: Un poco más compacto para que no moleste tanto al superponerse */
+        width: 45px;
+        height: 45px;
+        font-size: 20px; /* Tamaño del violín */
+        
+        /* 2. POSICIÓN: Lo metemos MÁS ADENTRO de la pantalla */
+        /* Antes estaba a 10px o 15px, ahora a 25px para huir del borde peligroso */
+        bottom: 5px; 
+        right: 5px;  
+        
+        /* 3. CAPA: Z-Index altísimo para que flote sobre las flores y todo lo demás */
+        z-index: 10000 !important; 
+        
+        /* Aseguramos que se quede fijo en la pantalla aunque hagas scroll */
+        position: fixed; 
+        
+        /* Sombra fuerte para que se distinga si cae encima de texto negro */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 4px 12px rgba(0,0,0,0.5);
     }
 }
 
