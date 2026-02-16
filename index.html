@@ -46,7 +46,7 @@
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
 					  method="post" 
 					  target="hidden_iframe"
-					  onsubmit="submitted=true;">
+					  onsubmit="submitted=true;  return validarNinos();">
 
 					<div class="form-group">
 						<label>Nombre completo</label>
@@ -76,7 +76,7 @@
 					<div id="seccionEdades" style="display: none;">
 						<div class="form-group">
 							<label>Indique cuantos y edad de los mismos</label>
-							<input type="text" name="entry.1056378089" id="inputEdades" placeholder="Ej: 2 niños, 4 y 7 años" required>
+							<input type="text" name="entry.1056378089" id="inputEdades" placeholder="Ej: 2 niños, 4 y 7 años">
 						</div>
 					</div>
 
@@ -94,24 +94,34 @@
 				</form>
 			</section>
 			<script>
-			    var submitted = false;
-			
-			    function toggleNinos() {
-			        var select = document.getElementById("vienenNinos");
-			        var seccion = document.getElementById("seccionEdades");
-			        var input = document.getElementById("inputEdades");
-			        
-			        if (select.value === "Sí") {
-			            seccion.style.display = "block";
-			            input.required = true;      
-			            input.value = "";          
-			            input.focus();
-			        } else {
-			            seccion.style.display = "none";
-			            input.required = false;     
-			            input.value = "Ninguno";    
-			        }
-			    }
+    			var submitted = false;
+    
+				function toggleNinos() {
+					var select = document.getElementById("vienenNinos");
+					var seccion = document.getElementById("seccionEdades");
+					var input = document.getElementById("inputEdades");
+					
+					if (select.value === "Sí") {
+						seccion.style.display = "block";
+						input.value = "";  
+						input.focus();
+					} else {
+						seccion.style.display = "none";
+						input.value = "Ninguno";  
+					}
+				}
+				
+				function validarNinos() {
+					var select = document.getElementById("vienenNinos");
+					var input = document.getElementById("inputEdades");
+					
+					if (select.value === "Sí" && !input.value.trim()) {
+						alert("Por favor indica cuántos niños vienen y sus edades.");
+						input.focus();
+						return false;  // BLOQUEA envío
+					}
+					return true;  // PERMITE envío
+				}
 			</script>
         </main>
 
