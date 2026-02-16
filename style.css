@@ -35,10 +35,10 @@ body {
 }
 
 .lugar-fecha {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.9rem;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2rem;
     letter-spacing: 1px;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
 
 /* Logo centrado */
