@@ -10,14 +10,95 @@ body {
 }
 
 /* El "Panfleto" */
+/* EL CONTENEDOR PRINCIPAL */
 .paper-container { 
-    background-color: #fdfaf0; /* Color papel antiguo */ 
+    background-color: #fdfaf0; 
     max-width: 600px; 
     width: 100%; 
-    padding: 40px; 
+    
+    /* Aumentamos el padding para que el texto no toque los bordes nuevos */
+    padding: 60px; 
+    
     box-shadow: 0 0 20px rgba(0,0,0,0.2); 
-    border: 1px solid #d2b48c; 
-    position: relative; }
+    position: relative; /* Necesario para que los bordes floten dentro */
+    
+    /* Quitamos cualquier borde del contenedor, los haremos flotantes */
+    border: none; 
+}
+
+/* 1. EL PUNTEADO EXTERIOR */
+.paper-container::before {
+    content: "";
+    position: absolute;
+    
+    /* Separación desde el borde del papel (flotando) */
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    
+    /* Punteado idéntico al interior */
+    border: 3px dotted #2c2c2c; 
+    
+    pointer-events: none; /* Para poder dar click a través de él */
+}
+
+/* 2. EL PUNTEADO INTERIOR + LÍNEA SÓLIDA */
+.paper-container::after {
+    content: "";
+    position: absolute;
+    
+    /* Separación mayor para que quede dentro del otro */
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    
+    /* Punteado idéntico al exterior */
+    border: 3px dotted #2c2c2c; 
+    
+    /* TRUCO: Usamos 'outline' para crear la línea sólida en medio de los dos punteados */
+    outline: 2px solid #2c2c2c; 
+    outline-offset: 4px; /* Empuja la línea sólida hacia afuera (hacia el punteado exterior) */
+    
+    pointer-events: none;
+}
+
+/* --- OPTIMIZACIÓN PARA MÓVIL (Pantallas menores a 480px) --- */
+@media (max-width: 480px) {
+    .paper-container {
+        /* Reducimos el padding drásticamente para ganar espacio */
+        /* 30px es suficiente para separar texto del borde sin perder espacio */
+        padding: 30px 20px; 
+    }
+
+    /* Ajustamos el borde EXTERIOR más pegado al borde del papel */
+    .paper-container::before {
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        border-width: 2px; /* Mantenemos grosor visible */
+    }
+
+    /* Ajustamos el borde INTERIOR y la línea sólida */
+    .paper-container::after {
+        top: 12px;  /* Mucho más cerca del borde exterior */
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        
+        border-width: 2px;
+        outline-width: 1px;
+        outline-offset: 2px; /* Reducimos el espacio entre línea y puntos */
+    }
+
+    /* Ajuste extra para títulos muy grandes en móvil para que no se corten */
+    .names {
+        margin: 15px 0; /* Menos margen vertical */
+        font-size: 2.5rem; /* Un pelín más pequeño si es necesario */
+    }
+}
 
 /* ===== HEADER ESTILO BRIDGERTON ===== */
 
@@ -83,7 +164,7 @@ body {
     }
 
     .lugar-fecha {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -95,6 +176,10 @@ body {
     line-height: 0.8;
     margin-right: 10px;
     color: #1a1a1a;
+}
+
+.drop-cap{
+    text-align: justify;
 }
 
 .names {
@@ -142,7 +227,7 @@ h3 {
 .signature {
     font-family: 'Great Vibes', cursive;
     font-size: 2rem;
-    text-align: right;
+    text-align: center;
 }
 
 .form-group {
@@ -228,7 +313,7 @@ h3 {
     font-size: 22px;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    z-index: 9999; /* 🔥 MUY IMPORTANTE */
+    z-index: 9999; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -274,5 +359,3 @@ h3 {
         font-size: 2.2rem;
     }
 }
-
-
