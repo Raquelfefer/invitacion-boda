@@ -41,7 +41,7 @@
 				<h3>Confirmación de Asistencia</h3>
 				<p><i>Se ruega a los invitados que informen a esta autora de sus planes con la mayor brevedad.</i></p>
 
-				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted) { alert('¡Vuestra respuesta ha sido recibida por el Ton! Nos vemos en el baile.'); window.location.reload(); }"></iframe>
+				<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted) { alert('¡Vuestra respuesta ha sido recibida! Nos vemos en el baile.'); window.location.reload(); }"></iframe>
 
 				<form action="https://docs.google.com/forms/d/e/1FAIpQLSfSWzc1xoHQXI6Nxj_cxTT89VCTf7IliCilZM0wfw7KGO858Q/formResponse" 
 					  method="post" 
@@ -97,19 +97,19 @@
 			    var submitted = false;
 			
 			    function toggleNinos() {
-			        var select = document.getElementById("vienenNinos");
-			        var seccion = document.getElementById("seccionEdades");
-			        var input = document.getElementById("inputEdades");
-			        
-			        if (select.value === "Sí") {
-			            seccion.style.display = "block";
-			            input.required = true;
-			        } else {
-			            seccion.style.display = "none";
-			            input.required = false;
-			            input.value = "";
-			        }
-			    }
+				    var select = document.getElementById("vienenNinos");
+				    var seccion = document.getElementById("seccionEdades");
+				    var input = document.getElementById("inputEdades");
+				    
+				    if (select.value === "Sí") {
+				        seccion.style.display = "block";
+				        input.setAttribute("required", ""); // Usamos setAttribute para mayor compatibilidad
+				    } else {
+				        seccion.style.display = "none";
+				        input.removeAttribute("required"); // Quitamos el atributo por completo
+				        input.value = ""; 
+				    }
+				}
 			</script>
         </main>
 
