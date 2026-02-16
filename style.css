@@ -10,58 +10,14 @@ body {
 }
 
 /* El "Panfleto" */
-/* El "Panfleto" con línea negra y punteado */
-.paper-container {
-    background-color: #fdfaf0; /* papel antiguo */
-    max-width: 600px;
-    width: 100%;
-    padding: 40px;
-    position: relative;
-    box-shadow: 0 0 25px rgba(0,0,0,0.25), inset 0 0 10px rgba(0,0,0,0.05);
-}
-
-/* Línea negra central */
-.paper-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #2c2c2c; /* línea negra principal */
-    box-sizing: border-box;
-}
-
-/* Punteado exterior */
-.paper-container::after {
-    content: "";
-    position: absolute;
-    top: -6px;  /* separación desde la línea negra */
-    left: -6px;
-    width: calc(100% + 12px);
-    height: calc(100% + 12px);
-    border: 2px dotted #2c2c2c; /* punteado alrededor */
-    box-sizing: border-box;
-}
-
-/* ===== AJUSTE PARA MÓVIL ===== */
-@media (max-width: 480px) {
-    .paper-container {
-        padding: 25px 15px;
-    }
-
-    .paper-container::after {
-        top: -3px;   /* menos separación en móvil */
-        left: -3px;
-        width: calc(100% + 6px);
-        height: calc(100% + 6px);
-        border-width: 1.5px; /* punteado más fino para móvil */
-    }
-
-    .paper-container::before {
-        border-width: 1.5px; /* línea negra más fina en móvil */
-    }
-}
+.paper-container { 
+    background-color: #fdfaf0; /* Color papel antiguo */ 
+    max-width: 600px; 
+    width: 100%; 
+    padding: 40px; 
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); 
+    border: 1px solid #d2b48c; 
+    position: relative; }
 
 /* ===== HEADER ESTILO BRIDGERTON ===== */
 
